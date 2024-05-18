@@ -336,6 +336,7 @@ function CommandPaletteInner({
           keywords: ["delete", "destroy"],
           viewMode: false,
           perform: () => {
+            // @ts-ignore
             jotaiStore.set(activeConfirmDialogAtom, "clearCanvas");
           },
         },
@@ -494,6 +495,7 @@ function CommandPaletteInner({
       });
 
       setAllCommands(allCommands);
+      // @ts-ignore
       setLastUsed(
         allCommands.find((command) => command.label === lastUsed?.label) ??
           null,
@@ -536,6 +538,7 @@ function CommandPaletteInner({
       document.body.classList.add("excalidraw-animations-disabled");
       closeCommandPalette(() => {
         command.perform({ actionManager, event });
+        // @ts-ignore
         setLastUsed(command);
 
         requestAnimationFrame(() => {

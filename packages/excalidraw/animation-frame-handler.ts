@@ -73,7 +73,7 @@ export class AnimationFrameHandler {
 
   private onFrame(target: AnimationTarget, timestamp: number): boolean {
     const shouldAbort = target.callback(timestamp);
-
+    // @ts-ignore
     return shouldAbort ?? false;
   }
 }

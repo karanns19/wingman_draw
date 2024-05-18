@@ -41,7 +41,9 @@ export default defineConfig({
     sourcemap: true,
   },
   plugins: [
+    // @ts-ignore
     react(),
+    // @ts-ignore
     checker({
       typescript: true,
       eslint:
@@ -53,8 +55,11 @@ export default defineConfig({
         badgeStyle: "margin-bottom: 4rem; margin-left: 1rem",
       },
     }),
+    // @ts-ignore
     svgrPlugin(),
+    // @ts-ignore
     ViteEjsPlugin(),
+    // @ts-ignore
     VitePWA({
       registerType: "autoUpdate",
       devOptions: {

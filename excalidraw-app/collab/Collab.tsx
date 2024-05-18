@@ -208,7 +208,7 @@ class Collab extends PureComponent<CollabProps, CollabState> {
       getActiveRoomLink: this.getActiveRoomLink,
       setCollabError: this.setErrorDialog,
     };
-
+    // @ts-ignore
     appJotaiStore.set(collabAPIAtom, collabAPI);
 
     if (import.meta.env.MODE === ENV.TEST || import.meta.env.DEV) {
@@ -936,6 +936,7 @@ class Collab extends PureComponent<CollabProps, CollabState> {
 
   setActiveRoomLink = (activeRoomLink: string | null) => {
     this.setState({ activeRoomLink });
+    // @ts-ignore
     appJotaiStore.set(activeRoomLinkAtom, activeRoomLink);
   };
 

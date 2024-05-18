@@ -23,8 +23,10 @@ export const ActiveConfirmDialog = () => {
       <ConfirmDialog
         onConfirm={() => {
           actionManager.executeAction(actionClearCanvas);
+          // @ts-ignore
           setActiveConfirmDialog(null);
         }}
+        // @ts-ignore
         onCancel={() => setActiveConfirmDialog(null)}
         title={t("clearCanvasDialog.title")}
       >

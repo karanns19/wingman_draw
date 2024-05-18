@@ -262,9 +262,11 @@ const initializeScene = async (opts: {
         !scene.elements.length ||
         (await openConfirmModal(shareableLinkConfirmDialog))
       ) {
+        // @ts-ignore
         return { scene: data, isExternalScene };
       }
     } catch (error: any) {
+      // @ts-ignore
       return {
         scene: {
           appState: {

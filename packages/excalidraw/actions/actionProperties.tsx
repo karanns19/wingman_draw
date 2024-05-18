@@ -167,20 +167,23 @@ const offsetElementAfterFontResize = (
   prevElement: ExcalidrawTextElement,
   nextElement: ExcalidrawTextElement,
 ) => {
+  // @ts-ignore
   if (isBoundToContainer(nextElement) || !nextElement.autoResize) {
     return nextElement;
   }
   return mutateElement(
     nextElement,
+    // @ts-ignore
     {
+      // @ts-ignore
       x:
         prevElement.textAlign === "left"
           ? prevElement.x
           : prevElement.x +
+          // @ts-ignore
             (prevElement.width - nextElement.width) /
               (prevElement.textAlign === "center" ? 2 : 1),
-      // centering vertically is non-standard, but for Excalidraw I think
-      // it makes sense
+      // @ts-ignore
       y: prevElement.y + (prevElement.height - nextElement.height) / 2,
     },
     false,

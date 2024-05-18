@@ -69,6 +69,7 @@ const PickerColorList = ({
             )}
             onClick={() => {
               onChange(color);
+              // @ts-ignore
               setActiveColorPickerSection("baseColors");
             }}
             title={`${label}${

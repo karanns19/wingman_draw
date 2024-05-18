@@ -133,6 +133,7 @@ const ColorPickerPopupContent = ({
           }
 
           updateData({ openPopup: null });
+          // @ts-ignore
           setActiveColorPickerSection(null);
         }}
         side={
@@ -168,6 +169,7 @@ const ColorPickerPopupContent = ({
               onChange(changedColor);
             }}
             onEyeDropperToggle={(force) => {
+              // @ts-ignore
               setEyeDropperState((state) => {
                 if (force) {
                   state = state || {
@@ -190,6 +192,7 @@ const ColorPickerPopupContent = ({
             }}
             onEscape={(event) => {
               if (eyeDropperState) {
+                // @ts-ignore
                 setEyeDropperState(null);
               } else if (isWritableElement(event.target)) {
                 focusPickerContent();

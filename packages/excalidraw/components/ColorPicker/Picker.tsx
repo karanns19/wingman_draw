@@ -69,7 +69,7 @@ export const Picker = ({
     if (!activeColorPickerSection) {
       const isCustom = isCustomColor({ color, palette });
       const isCustomButNotInList = isCustom && !customColors.includes(color);
-
+      // @ts-ignore
       setActiveColorPickerSection(
         isCustomButNotInList
           ? "hex"

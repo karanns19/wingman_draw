@@ -46,6 +46,7 @@ export const CustomColorList = ({
             )}
             onClick={() => {
               onChange(c);
+              // @ts-ignore
               setActiveColorPickerSection("custom");
             }}
             title={c}

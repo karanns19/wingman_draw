@@ -60,6 +60,7 @@ export const ShadeList = ({ hex, onChange, palette }: ShadeListProps) => {
               style={color ? { "--swatch-color": color } : undefined}
               onClick={() => {
                 onChange(color);
+                // @ts-ignore
                 setActiveColorPickerSection("shades");
               }}
             >

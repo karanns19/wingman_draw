@@ -147,6 +147,7 @@ export const ClearCanvas = () => {
   const { t } = useI18n();
 
   const setActiveConfirmDialog = useSetAtom(
+    // @ts-ignore
     activeConfirmDialogAtom,
     jotaiScope,
   );

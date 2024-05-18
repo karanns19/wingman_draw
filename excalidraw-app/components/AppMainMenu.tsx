@@ -1,10 +1,6 @@
 import React from "react";
-import {
-  ExcalLogo,
-} from "../../packages/excalidraw/components/icons";
 import type { Theme } from "../../packages/excalidraw/element/types";
 import { MainMenu } from "../../packages/excalidraw/index";
-import { isExcalidrawPlusSignedUser } from "../app_constants";
 import { LanguageList } from "./LanguageList";
 
 export const AppMainMenu: React.FC<{

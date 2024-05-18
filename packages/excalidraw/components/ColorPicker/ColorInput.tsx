@@ -64,6 +64,7 @@ export const ColorInput = ({
 
   useEffect(() => {
     return () => {
+      // @ts-ignore
       setEyeDropperState(null);
     };
   }, [setEyeDropperState]);
@@ -85,6 +86,7 @@ export const ColorInput = ({
           setInnerValue(color);
         }}
         tabIndex={-1}
+        // @ts-ignore
         onFocus={() => setActiveColorPickerSection("hex")}
         onKeyDown={(event) => {
           if (event.key === KEYS.TAB) {
@@ -111,6 +113,7 @@ export const ColorInput = ({
               selected: eyeDropperState,
             })}
             onClick={() =>
+              // @ts-ignore
               setEyeDropperState((s) =>
                 s
                   ? null

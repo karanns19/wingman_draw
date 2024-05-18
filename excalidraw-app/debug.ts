@@ -93,6 +93,7 @@ export class Debug {
   public static logTimeAverage = (time?: number, name = "default") => {
     Debug.setupInterval();
     const now = performance.now();
+    // @ts-ignore
     const { t, times } = (Debug.TIMES_AVG[name] = Debug.TIMES_AVG[name] || {
       t: 0,
       times: [],

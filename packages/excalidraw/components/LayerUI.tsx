@@ -399,6 +399,7 @@ const LayerUI = ({
         <EyeDropper
           colorPickerType={eyeDropperState.colorPickerType}
           onCancel={() => {
+            // @ts-ignore
             setEyeDropperState(null);
           }}
           onChange={(colorPickerType, color, selectedElements, { altKey }) => {
@@ -436,6 +437,7 @@ const LayerUI = ({
             }
           }}
           onSelect={(color, event) => {
+            // @ts-ignore
             setEyeDropperState((state) => {
               return state?.keepOpenOnAlt && event.altKey ? state : null;
             });

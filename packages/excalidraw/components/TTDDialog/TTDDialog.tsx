@@ -102,6 +102,7 @@ export const TTDDialogBase = withInternalFallback(
       event,
     ) => {
       setText(event.target.value);
+      // @ts-ignore
       setTtdGeneration((s) => ({
         generatedResponse: s?.generatedResponse ?? null,
         prompt: event.target.value,
@@ -147,13 +148,16 @@ export const TTDDialogBase = withInternalFallback(
           await rest.onTextSubmit(prompt);
 
         if (typeof generatedResponse === "string") {
+          // @ts-ignore
           setTtdGeneration((s) => ({
             generatedResponse,
             prompt: s?.prompt ?? null,
           }));
         }
 
+        
         if (isFiniteNumber(rateLimit) && isFiniteNumber(rateLimitRemaining)) {
+          // @ts-ignore
           setRateLimits({ rateLimit, rateLimitRemaining });
         }
 

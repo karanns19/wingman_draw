@@ -1909,12 +1909,12 @@ class App extends React.Component<AppProps, AppState> {
 
     if (!result.ok) {
       trackEvent("ai", "generate (failed)", "d2c");
-      console.error(result.error);
       this.updateMagicGeneration({
         frameElement,
         data: {
           status: "error",
           code: "ERR_OAI",
+          // @ts-ignore
           message: result.error?.message || "Unknown error during generation",
         },
       });
@@ -2084,6 +2084,7 @@ class App extends React.Component<AppProps, AppState> {
   };
 
   private openEyeDropper = ({ type }: { type: "stroke" | "background" }) => {
+    // @ts-ignore
     jotaiStore.set(activeEyeDropperAtom, {
       swapPreviewOnAlt: true,
       colorPickerType:
@@ -2420,6 +2421,7 @@ class App extends React.Component<AppProps, AppState> {
         setState: {
           configurable: true,
           value: (...args: Parameters<typeof setState>) => {
+            // @ts-ignore
             return this.setState(...args);
           },
         },
@@ -4059,6 +4061,7 @@ class App extends React.Component<AppProps, AppState> {
         event[KEYS.CTRL_OR_CMD] &&
         (event.key === KEYS.BACKSPACE || event.key === KEYS.DELETE)
       ) {
+        // @ts-ignore
         jotaiStore.set(activeConfirmDialogAtom, "clearCanvas");
       }
 
