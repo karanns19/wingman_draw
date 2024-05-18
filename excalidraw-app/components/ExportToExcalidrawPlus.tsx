@@ -1,6 +1,3 @@
-import React from "react";
-import { Card } from "../../packages/excalidraw/components/Card";
-import { ToolButton } from "../../packages/excalidraw/components/ToolButton";
 import { serializeAsJSON } from "../../packages/excalidraw/data/json";
 import { loadFirebaseStorage, saveFilesToFirebase } from "../data/firebase";
 import type {
@@ -13,7 +10,6 @@ import type {
   BinaryFiles,
 } from "../../packages/excalidraw/types";
 import { nanoid } from "nanoid";
-import { useI18n } from "../../packages/excalidraw/i18n";
 import {
   encryptData,
   generateEncryptionKey,
@@ -22,9 +18,6 @@ import { isInitializedImageElement } from "../../packages/excalidraw/element/typ
 import { FILE_UPLOAD_MAX_BYTES } from "../app_constants";
 import { encodeFilesForUpload } from "../data/FileManager";
 import { MIME_TYPES } from "../../packages/excalidraw/constants";
-import { trackEvent } from "../../packages/excalidraw/analytics";
-import { getFrame } from "../../packages/excalidraw/utils";
-import { ExcalidrawLogo } from "../../packages/excalidraw/components/ExcalidrawLogo";
 
 export const exportToExcalidrawPlus = async (
   elements: readonly NonDeletedExcalidrawElement[],
@@ -83,52 +76,5 @@ export const exportToExcalidrawPlus = async (
     `${
       import.meta.env.VITE_APP_PLUS_APP
     }/import?excalidraw=${id},${encryptionKey}`,
-  );
-};
-
-export const ExportToExcalidrawPlus: React.FC<{
-  elements: readonly NonDeletedExcalidrawElement[];
-  appState: Partial<AppState>;
-  files: BinaryFiles;
-  name: string;
-  onError: (error: Error) => void;
-  onSuccess: () => void;
-}> = ({ elements, appState, files, name, onError, onSuccess }) => {
-  const { t } = useI18n();
-  return (
-    <Card color="primary">
-      <div className="Card-icon">
-        <ExcalidrawLogo
-          style={{
-            [`--color-logo-icon` as any]: "#fff",
-            width: "2.8rem",
-            height: "2.8rem",
-          }}
-        />
-      </div>
-      <h2>Excalidraw+</h2>
-      <div className="Card-details">
-        {t("exportDialog.excalidrawplus_description")}
-      </div>
-      <ToolButton
-        className="Card-button"
-        type="button"
-        title={t("exportDialog.excalidrawplus_button")}
-        aria-label={t("exportDialog.excalidrawplus_button")}
-        showAriaLabel={true}
-        onClick={async () => {
-          try {
-            trackEvent("export", "eplus", `ui (${getFrame()})`);
-            await exportToExcalidrawPlus(elements, appState, files, name);
-            onSuccess();
-          } catch (error: any) {
-            console.error(error);
-            if (error.name !== "AbortError") {
-              onError(new Error(t("exportDialog.excalidrawplus_exportError")));
-            }
-          }
-        }}
-      />
-    </Card>
   );
 };
